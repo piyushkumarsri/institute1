@@ -1,0 +1,71 @@
+<div class="container card">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label>Name</label>
+      <input formControlName="name" type="text" class="form-control">
+      <app-field-errors label="Name" [control]="form.get('name')"></app-field-errors>
+    </div>
+    <div class="form-group">
+      <label>Gender</label>
+      <select formControlName="gender" class="form-control">
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input formControlName="email" type="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Mobile</label>
+      <input formControlName="mobile" type="text" class="form-control">
+    </div>
+    <div formGroupName="address">
+      <div class="form-group">
+        <label>Line 1</label>
+        <input formControlName="line1" type="text" class="form-control">
+        <app-field-errors [control]="form.get('address').get('line1')"></app-field-errors>
+      </div>
+      <div class="form-group">
+        <label>Line 2</label>
+        <input formControlName="line2" type="text" class="form-control">
+        <app-field-errors label="Line 2" [control]="form.get('address').get('line2')"></app-field-errors>
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <input formControlName="city" type="text" class="form-control">
+        <app-field-errors label="City" [control]="form.get('address').get('city')"></app-field-errors>
+      </div>
+      <div class="form-group">
+        <label>Pincode</label>
+        <input formControlName="pincode" type="text" class="form-control">
+        <app-field-errors label="Pincode " [control]="form.get( 'address').get( 'pincode') "></app-field-errors>
+      </div>
+
+    </div>
+
+
+
+  </form>
+
+</div>
+<div>
+    <button (click)="saveUser() ">Save</button>
+    <button (click)="disable() ">Disable</button>
+    <button (click)="enable() ">Enable</button>
+    <button (click)="disableAddr() ">Disable Address</button>
+    <button (click)="enableAddr() ">Enable Address</button>
+    <button (click)="fillupForm() ">Fillup</button>
+    <button (click)="patchForm() ">Patch it</button>
+    <button (click)="form.reset() ">Reset</button>
+  </div>
+
+
+Valid : {{form.valid}}
+
+<pre>
+  {{form.get('address').get('pincode').errors | json}}
+</pre>
+<pre>
+  {{form.value|json}}
+</pre>

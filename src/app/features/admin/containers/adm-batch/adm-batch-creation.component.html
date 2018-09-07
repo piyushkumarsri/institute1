@@ -1,0 +1,51 @@
+<h3>New Batch</h3>
+<div class="container card">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label>Batch Name</label>
+      <input formControlName="batch_name" size="30" type="text" class="form-control">
+     <app-field-errors label="Batch Name" [control]="form.get('batch_name')"></app-field-errors>
+     
+  </div> 
+    
+    <div class="form-group">
+      <label>Batch Type</label>
+       <select formControlName="batch_type"  class="form-control">    
+         <option [ngValue]="null">Select Batch Type</option>   
+        <option>Weekly</option>
+        <option>Regular</option>
+      </select>
+      <app-field-errors label="Batch Type" [control]="form.get('batch_type')"></app-field-errors>
+        
+       </div>  
+       <div class="form-group">
+          <label>Course</label>
+          <select formControlName="course" class="form-control">
+            <option [ngValue]="null">Select Course</option>
+            <option *ngFor="let course of availableCourses" [ngValue]="course._id">{{course.course_name}}</option>
+          </select>
+          <app-field-errors label="Course" [control]="form.get('course')"></app-field-errors>
+        
+         
+      </div>   
+    
+  </form>
+  <div>
+    <button (click)="save()">Save</button>
+    <button (click)="form.reset() ">Reset</button>
+   
+    
+   </div>
+</div>
+
+
+<!-- 
+Valid : {{form.valid}}
+
+
+<pre>
+  {{form.value|json}}
+</pre>
+ -->
+
+

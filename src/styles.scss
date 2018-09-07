@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+
+// @import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/flick/theme.css";
+@import "~primeng/resources/primeng.min.css";
+
+$topheight: 56px;
+$leftwidth: 250px;
+#layout-topbar {
+  //   background-color: #20272a;
+  box-sizing: border-box;
+  display: block;
+  padding: 0;
+  height: $topheight;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9997;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+#layout-sidebar {
+  position: fixed;
+  left: 0;
+  top: $topheight;
+  height: calc(100% - #{$topheight});
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: $leftwidth;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+#layout-content {
+  margin-left: $leftwidth;
+  padding-top: $topheight;
+  background-color: #fff;
+}
+
+// mobile screen
+@media screen and (max-width: 64em) {
+  #layout-sidebar {
+    top: $topheight;
+    left: -$leftwidth;
+    transition: left 0.2s;
+    z-index: 9999;
+    &.active {
+      left: 0px;
+    }
+  }
+
+  #layout-content {
+    margin-left: 0;
+    padding-top: 100px;
+  }
+
+  #layout-topbar {
+    text-align: center;
+  }
+}

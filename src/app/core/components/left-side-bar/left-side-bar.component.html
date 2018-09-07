@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let menu of currentMenu">
+    <a [routerLink]="menu.link">{{menu.label}}</a>
+  </li>
+</ul>
